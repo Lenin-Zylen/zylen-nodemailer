@@ -8,9 +8,10 @@ const mailOptions = {
   to: "it.zylensolutions@gmail.com",
   bcc: [
     "ganesh.durairaj@zylensolutions.com",
-    "lenin.kasinathan@zylensolutions.com"
+    "lenin.kasinathan@zylensolutions.com",
+    "hr@zylensolutions.com"
   ],
-  cc: "hr@zylensolutions.com",
+  cc: "sales@zylensolutions.com",
 };
 
 module.exports.createUser = async function (req, res) {
