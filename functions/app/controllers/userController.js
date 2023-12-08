@@ -5,10 +5,10 @@ var path = require('path');
 
 const mailOptions = {
   from: "zylensolutions@gmail.com",
-  to: "sales@zylensolutions.com",
+  to: "it.zylensolutions@gmail.com",
   bcc: [
     "ganesh.durairaj@zylensolutions.com",
-    "lenin.kasinathan@zylensolutions.com",
+    "lenin.kasinathan@zylensolutions.com"
   ],
   cc: "hr@zylensolutions.com",
 };
@@ -23,6 +23,7 @@ module.exports.sendMail = async function (userDetails) {
 
     const transport = nodemailer.createTransport({
       service: "gmail",
+      secure: true,
       auth: {
         user: "zylensolutions@gmail.com",
         pass: "tvex luty vmex mtmh",

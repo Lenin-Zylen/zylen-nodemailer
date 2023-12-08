@@ -17,7 +17,7 @@ router.post("/sendmail", async (req, res) => {
     email,
     description,
   });
-  responseData(response);
+  responseData(response, res);
 });
 
 router.post("/hire", async (req, res) => {
