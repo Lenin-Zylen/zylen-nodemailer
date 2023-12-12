@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "c9507f71-c84a-4537-bd6d-02e7c9f74539",
+		"name": "Zylen-Web-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1169542"
+	},
+	"item": [
+		{
+			"name": "Contactus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Ganesh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ganesh.durai@zylensolutions.com",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testing attachments",
+							"type": "text"
+						},
+						{
+							"key": "phonenumber",
+							"value": "8015321911",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Ganesh Durai/Downloads/sample-1.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://us-central1-zylen-server.cloudfunctions.net/app/api/user/contactus",
+					"protocol": "https",
+					"host": [
+						"us-central1-zylen-server",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"app",
+						"api",
+						"user",
+						"contactus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sendmail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ganesh\",\r\n    \"email\": \"ganesh.durai@zylensolutions.com\",\r\n    \"description\": \"Sending a test mail\",\r\n    \"phonenumber\": \"8015321911\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/user/sendmail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"user",
+						"sendmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hire",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ganesh\",\r\n    \"email\": \"ganesh.durai@zylensolutions.com\",\r\n    \"description\": \"Sending a test mail\",\r\n    \"phonenumber\": \"8015321911\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-zylen-server.cloudfunctions.net/app/api/user/hire",
+					"protocol": "https",
+					"host": [
+						"us-central1-zylen-server",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"app",
+						"api",
+						"user",
+						"hire"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
