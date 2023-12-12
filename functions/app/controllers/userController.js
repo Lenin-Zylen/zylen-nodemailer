@@ -5,7 +5,6 @@ const mailOptions = {
   to: "it.zylensolutions@gmail.com",
   bcc: [
     "ganesh.durai@zylensolutions.com",
-    "lenin.kasinathan@zylensolutions.com",
     "hr@zylensolutions.com",
     "aparna.kv@zylensolutions.com"
   ],
