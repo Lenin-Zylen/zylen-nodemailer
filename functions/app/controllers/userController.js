@@ -6,7 +6,7 @@ const mailOptions = {
   bcc: [
     "ganesh.durai@zylensolutions.com",
     "hr@zylensolutions.com",
-    "aparna.kv@zylensolutions.com"
+    "lenin.kasinathan@zylensolutions.com"
   ],
   cc: "sales@zylensolutions.com",
 };

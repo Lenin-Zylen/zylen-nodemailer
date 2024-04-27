@@ -52,6 +52,7 @@ const upload = multer({
 const emailMiddleware = async (req, res, next) => {
   try {
     const { name, email, description, phonenumber } = req.body;
+    console.log(req.file, "<---");
     const { filename } = req.file;
     const extension = filename.split('.')[1];
     const response = await userController.contactUs({ name, phonenumber, email, description, filename, extension })
