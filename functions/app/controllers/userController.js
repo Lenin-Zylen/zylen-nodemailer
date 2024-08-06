@@ -27,7 +27,8 @@ module.exports.createUser = async function (req, res) {
 module.exports.sendMail = async function (userDetails) {
   return new Promise((resolve, reject) => {
     const { name, phonenumber, email, description } = userDetails;
-
+    console.log(userDetails, "<----sendmail");
+    
     const transport = nodemailer.createTransport(authFile);
     mailOptions.subject = "Enquiry for Business";
     mailOptions.html = `
@@ -51,7 +52,8 @@ module.exports.sendMail = async function (userDetails) {
 module.exports.hire = async function (userDetails) {
   return new Promise((resolve, reject) => {
     const { name, phonenumber, email, description } = userDetails;
-
+    console.log(userDetails, "<-----hire");
+    
     const transport = nodemailer.createTransport(authFile);
     mailOptions.subject = "Applying for Job";
     mailOptions.html = `
@@ -75,7 +77,7 @@ module.exports.hire = async function (userDetails) {
 module.exports.contactUs = (userDetails) => {
   return new Promise((resolve, reject) => {
     const { name, phonenumber, email, description, filename, extension } = userDetails;
-
+    console.log(userDetails, "<-----contact us");
     const transport = nodemailer.createTransport(authFile);
 
     mailOptions.attachments = [
