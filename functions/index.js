@@ -9,7 +9,7 @@ const logger = require("morgan");
 const router = require("./app/routers/route");
 
 app.use(express.json());
-// let port = process.env.PORT || 4000;
+let port = process.env.PORT || 4000;
 app.use(cookieParser());
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -25,6 +25,6 @@ app.get("/", (req, res) => {
 });
 
 
-// app.listen(port, () => console.log(`Server listening on port ${port}`));
+app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 exports.app = functions.https.onRequest(app);
