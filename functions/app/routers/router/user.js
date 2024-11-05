@@ -41,7 +41,9 @@ const responseData = async function (response, res) {
 
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './files')
+    // cb(null, './files')
+    cb(null, path.resolve(__dirname, './files'));
+    // C:\Users\Ganesh Durai\Desktop\Zylen Projects\zylen-nodemailer\functions\files
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '--' + file.originalname)
