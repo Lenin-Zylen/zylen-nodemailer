@@ -3,6 +3,7 @@ var router = express();
 const fs = require('fs');
 const multer = require('multer');
 var userController = require("../../controllers/userController");
+const path = require('path');
 
 router.post("/sendmail", async (req, res) => {
   const { name, phonenumber, email, description } = req.body;
@@ -45,7 +46,7 @@ const fileStorageEngine = multer.diskStorage({
     // cb(null, path.resolve(__dirname, './files'));
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '--' + file.originalname)
+    cb(null, Date.now() + '--' + path.extname(file.originalname))
   }
 });
 
@@ -56,6 +57,7 @@ const upload = multer({
 const emailMiddleware = async (req, res, next) => {
   try {
     const { name, email, description, phonenumber } = req.body;
+    console.log("-------req.file", req.file);
     const { filename } = req.file;
     const extension = filename.split('.')[1];
     
