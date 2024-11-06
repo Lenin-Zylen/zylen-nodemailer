@@ -74,13 +74,13 @@ module.exports.hire = async function (userDetails) {
 
 module.exports.contactUs = (userDetails) => {
   return new Promise((resolve, reject) => {
-    const { name, phonenumber, email, description, filename, extension } = userDetails;
+    const { name, phonenumber, email, description, filename, buffer } = userDetails;
     const transport = nodemailer.createTransport(authFile);
 
     mailOptions.attachments = [
       {
-        filename: `image.${extension}`,
-        path: `./files/${filename}`
+        filename: `${filename}`,
+        content: Buffer.from(buffer)
       }
     ]
     mailOptions.subject = 'Seeking Attention';

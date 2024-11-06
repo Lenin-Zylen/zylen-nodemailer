@@ -4,6 +4,7 @@ const fs = require('fs');
 const multer = require('multer');
 var userController = require("../../controllers/userController");
 const path = require('path');
+const contactUsController = require("../../controllers/contactusController");
 
 router.post("/sendmail", async (req, res) => {
   const { name, phonenumber, email, description } = req.body;
@@ -51,50 +52,52 @@ const fileStorageEngine = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: fileStorageEngine
+  storage: multer.memoryStorage()
 })
 
-const emailMiddleware = async (req, res, next) => {
-  try {
-    const { name, email, description, phonenumber } = req.body;
-    console.log("-------req.file", req.file);
-    const { filename } = req.file;
-    const extension = filename.split('.')[1];
+// const emailMiddleware = async (req, res, next) => {
+//   try {
+//     const { name, email, description, phonenumber } = req.body;
+//     console.log("-------req.file", req.file);
+//     const { filename } = req.file;
+//     const extension = filename.split('.')[1];
     
-    const response = await userController.contactUs({ name, phonenumber, email, description, filename, extension })
-    if (response.success) {
-      req.filename = filename;
-      next();
-    }
-  } catch (error) {
-    console.log(error, '<-== something went wrong');
-  }
-}
+//     const response = await userController.contactUs({ name, phonenumber, email, description, filename, extension })
+//     if (response.success) {
+//       req.filename = filename;
+//       next();
+//     }
+//   } catch (error) {
+//     console.log(error, '<-== something went wrong');
+//   }
+// }
 
-const removeFile = async (req, res, next) => {
-  try {
-    const { filename } = req;
-    if (filename) {
-      const filePath = `./files/${filename}`
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          next();
-        }
-      })
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+// const removeFile = async (req, res, next) => {
+//   try {
+//     const { filename } = req;
+//     if (filename) {
+//       const filePath = `./files/${filename}`
+//       fs.unlink(filePath, (err) => {
+//         if (err) {
+//           console.log(err)
+//         } else {
+//           next();
+//         }
+//       })
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
-router.post('/contactus', upload.single('image'), emailMiddleware, removeFile, (req, res) => {
-  try {
-    res.status(200).json({ msg: 'File Saved Successfully' })
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-})
+// router.post('/contactus', upload.single('image'), emailMiddleware, removeFile, (req, res) => {
+//   try {
+//     res.status(200).json({ msg: 'File Saved Successfully' })
+//   } catch (error) {
+//     res.status(400).json({ error: error.message })
+//   }
+// })
+
+router.post('/contactus',upload.single('image'), contactUsController)
 
 module.exports = router;

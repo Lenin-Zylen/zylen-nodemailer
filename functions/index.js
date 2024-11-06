@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
@@ -5,6 +7,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+// const { initializeApp } = require('firebase/app');
+
+// const firebaseConfig = require("./app/config/firebase.config")
+
+// initializeApp(firebaseConfig)
+// console.log(firebaseConfig, 'checking the firebase condif')
 
 const router = require("./app/routers/route");
 
