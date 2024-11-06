@@ -17,7 +17,9 @@ const contactUsController = async (req, res, next) => {
       const { name, email, description, phonenumber } = req.body;
       const file = req.file;
 
-      const userDetails = { name, email, description, phonenumber, filename: file.originalname, buffer: file.buffer }
+      console.log(file,'checing the file in console 20--->')
+
+      const userDetails = { name, email, description, phonenumber, filename: "resume", buffer: file.buffer }
 
     //   console.log(file)
       const data = await user.contactUs(userDetails)
