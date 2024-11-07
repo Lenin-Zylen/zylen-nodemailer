@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 // const { initializeApp } = require('firebase/app');
+// let port = process.env.PORT || 4000;
 
 // const firebaseConfig = require("./app/config/firebase.config")
 
@@ -17,11 +18,11 @@ const logger = require("morgan");
 const router = require("./app/routers/route");
 
 app.use(express.json());
-// let port = process.env.PORT || 4000;
+app.use(express.urlencoded({ extended: true }))
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api", router);
 

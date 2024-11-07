@@ -1,9 +1,11 @@
 var express = require("express");
-var router = express();
-const fs = require('fs');
-const multer = require('multer');
+var router = express.Router();
+// const fs = require('fs');
+// const multer = require('multer');
 var userController = require("../../controllers/userController");
-const path = require('path');
+// const path = require('path');
+// const os = require('os');
+// const busboy = require('busboy');
 const contactUsController = require("../../controllers/contactusController");
 
 router.post("/sendmail", async (req, res) => {
@@ -41,19 +43,19 @@ const responseData = async function (response, res) {
   }
 };
 
-const fileStorageEngine = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './files')
-    // cb(null, path.resolve(__dirname, './files'));
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '--' + path.extname(file.originalname))
-  }
-});
+// const fileStorageEngine = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, './files')
+//     // cb(null, path.resolve(__dirname, './files'));
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + '--' + path.extname(file.originalname))
+//   }
+// });
 
-const upload = multer({
-  storage: multer.memoryStorage()
-})
+// const upload = multer({
+//   storage: multer.memoryStorage()
+// })
 
 // const emailMiddleware = async (req, res, next) => {
 //   try {
@@ -98,6 +100,21 @@ const upload = multer({
 //   }
 // })
 
-router.post('/contactus',upload.single('image'), contactUsController)
+
+router.post('/contactus', async (req, res) => {
+  // console.log(req.files, 'checking the file');
+  try {
+   const response = await userController.contactUs({ ...req.body });
+
+   if (response.success) {
+      res.status(200).json({ message: "File Submitted" })
+   } else {
+      throw new Error(response.message)
+   }
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
+
 
 module.exports = router;
