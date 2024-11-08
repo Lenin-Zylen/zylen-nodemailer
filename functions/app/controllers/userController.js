@@ -89,7 +89,7 @@ module.exports.contactUs = (userDetails) => {
     <p>Name: ${name}</p>
     <p> Email Id: ${email}</p>
     <p>Mobile Number: ${phonenumber}</p>
-    <p>Requirement Details: ${description}</p>`;
+    <p>Requirement Details: ${description}</p>` + ( userDetails?.budget ? `<p>Budget: ${userDetails?.budget} </p>` : '' ) 
 
     transport.sendMail(mailOptions, (err) => {
       if (err) {
