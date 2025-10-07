@@ -7,16 +7,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-// const { initializeApp } = require('firebase/app');
-// let port = process.env.PORT || 4000;
-
-// const firebaseConfig = require("./app/config/firebase.config")
-
-// initializeApp(firebaseConfig)
-// console.log(firebaseConfig, 'checking the firebase condif')
+require("dotenv").config();
 
 const router = require("./app/routers/route");
-
+const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,7 +24,7 @@ app.use("/api", router);
 // public
 // get user
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello Production World");
 });
 
 

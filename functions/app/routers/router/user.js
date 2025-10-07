@@ -33,6 +33,18 @@ router.post("/hire", async (req, res) => {
   responseData(response, res);
 });
 
+router.post("/join-waitlist", async (req, res) => {
+  const { email } = req.body;
+  console.log(req.body, "<----/join-waitlist");
+  
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+  
+  const response = await userController.joinWaitlist({ email });
+  responseData(response, res);
+});
+
 const responseData = async function (response, res) {
   if (response.success) {
     return res.status(200).json({

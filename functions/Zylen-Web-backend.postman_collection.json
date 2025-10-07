@@ -5,6 +5,18 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1169542"
 	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:4000",
+			"type": "string"
+		},
+		{
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	],
 	"item": [
 		{
 			"name": "Contactus",
@@ -118,6 +130,41 @@
 						"hire"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Waitlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/user/join-waitlist",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"join-waitlist"
+					]
+				},
+				"description": "Join the product waitlist by providing an email address. This will send a notification to the product team and update the Google Sheet with the email and date."
 			},
 			"response": []
 		}
